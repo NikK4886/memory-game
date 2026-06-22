@@ -12,20 +12,20 @@ const levels = {
         label: "Beginner",
         moveDuration: 700,
         pause: 150,
-        shuffleCount: 7,
+        shuffleCount: 8,
     },
     intermediate: {
         label: "Intermediate",
         moveDuration: 420,
         pause: 90,
-        shuffleCount: 10,
+        shuffleCount: 12,
     },
 
     impossible: {
         label: "Impossible",
         moveDuration: 220,
         pause: 40,
-        shuffleCount: 15,
+        shuffleCount: 17,
     },
 };
 
@@ -146,7 +146,11 @@ function App() {
                 lowerCupId,
             });
 
-            await sleep(levelSettings.moveDuration);
+            if (shuffleNumber <= 2){
+                await sleep(1000);
+            } else {
+                await sleep(levelSettings.moveDuration);
+            }
 
             setMovingCups({
                 upperCupId: null,
